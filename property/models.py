@@ -80,15 +80,33 @@ class Complain(models.Model):
     def __str__(self):
         return {self.flat}
     
-    class Like(models.Model):
-        user = models.ForeignKey(
-            User, 
-            on_delete=models.CASCADE
-        )
-        flat = models.ForeignKey(
-            Flat,
-            on_delete=models.CASCADE
-        )
+class Like(models.Model):
+    user = models.ForeignKey(
+        User, 
+        on_delete=models.CASCADE
+    )
+    flat = models.ForeignKey(
+        Flat,
+        on_delete=models.CASCADE
+    )
 
-        def __str__(self):
-            return {self.user}
+    def __str__(self):
+        return str(self.user)  
+
+
+class Owner(models.Model):
+    owner = models.CharField('ФИО владельца', max_length=200)
+    owners_phonenumber = models.CharField('Номер владельца', max_length=20)
+    owner_pure_phone = PhoneNumberField(
+        region='RU',
+        blank=True,
+        verbose_name= 'Нормализированный номер телефона')
+    owned_apartments = models.ManyToManyField(
+        Flat,
+        blank=True,
+        verbose_name='Квартиры в собственностях',
+        related_name='owners'
+    )
+
+    def __str__(self):
+        return {self.owner}
