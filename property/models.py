@@ -20,14 +20,9 @@ class Owner(models.Model):
     )
 
     def __str__(self):
-        return self.owner
+        return self.name
 
 class Flat(models.Model):
-    owners = models.ManyToManyField(
-        Owner,
-        related_name='flats',
-        verbose_name='Собственники квартир'
-    )
     created_at = models.DateTimeField(
         'Когда создано объявление',
         default=timezone.now,
