@@ -100,18 +100,7 @@ class Complain(models.Model):
     def __str__(self):
         return {self.flat}
     
-class Like(models.Model):
-    user = models.ForeignKey(
-        User, 
-        on_delete=models.CASCADE
-    )
-    flat = models.ForeignKey(
-        Flat,
-        on_delete=models.CASCADE
-    )
-
-    def __str__(self):
-        return str(self.user)  
+    
 
 
 
