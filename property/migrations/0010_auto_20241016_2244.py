@@ -9,9 +9,6 @@ def make_pure_phone_numbers(apps, schema_editor):
 
     for flat in Flat.objects.iterator():
         number = flat.owners_phonenumber
-        
-        if number.startswith('8'):
-            number = '+7' + number[1:]
 
         number = phonenumbers.parse(number, 'RU')
         if phonenumbers.is_valid_number(number):
