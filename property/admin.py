@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Flat, Complain, Owner
+from .models import Flat, Complaint, Owner
 
 class OwnerInline(admin.TabularInline):
     model = Owner.owned_apartments.through
@@ -23,12 +23,12 @@ class FlatAdmin(admin.ModelAdmin):
     raw_id_fields = ('liked_by',)
     inlines = [OwnerInline]
 
-class ComplainAdmin(admin.ModelAdmin):
+class ComplaintAdmin(admin.ModelAdmin):
     raw_id_fields = ('user',)
 
 class OwnerAdmin(admin.ModelAdmin):
     raw_id_fields = ('owned_apartments',)
 
 admin.site.register(Flat, FlatAdmin)
-admin.site.register(Complain, ComplainAdmin)
+admin.site.register(Complaint, ComplaintAdmin)
 admin.site.register(Owner, OwnerAdmin)

@@ -80,7 +80,7 @@ class Flat(models.Model):
     def __str__(self):
         return f'{self.town}, {self.address} ({self.price}р.)'
 
-class Complain(models.Model):
+class Complaint(models.Model):
     user = models.ForeignKey(
     User,
     on_delete=models.CASCADE,
@@ -100,7 +100,7 @@ class Complain(models.Model):
     def __str__(self):
         return {self.flat}
     
-    
+
 
 
 
